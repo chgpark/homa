@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpark <tytytr2@gmail.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/12 15:34:57 by cpark             #+#    #+#             */
-/*   Updated: 2017/05/12 15:34:57 by cpark            ###   ########.fr       */
+/*   Created: 2017/05/11 11:48:48 by cpark             #+#    #+#             */
+/*   Updated: 2017/05/15 08:51:47 by cpark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <cstdlib>
-#include <iostream>
-#include <stdlib.h>
+#ifndef _LIBFT_H_
+ #define _LIBFT_H_
 
-using namespace std;
+ #include <unistd.h>
 
-void	ft_rc(char *str)
-{
-	unsigned int	i;
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_putnbr(int n);
+void	*ft_memset(void *s, int c, size_t n);
 
-	i = rand() % 100;
-	str[i] = 0;
-	if (i)
-	{
-		while (--i >= 1)
-			str[i] = rand() % 127;
-		str[i] = rand() % 127;
-	}
-}
+#endif

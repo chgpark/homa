@@ -1,32 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpark <tytytr2@gmail.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/12 15:34:57 by cpark             #+#    #+#             */
-/*   Updated: 2017/05/12 15:34:57 by cpark            ###   ########.fr       */
+/*   Created: 2017/05/15 07:59:11 by cpark             #+#    #+#             */
+/*   Updated: 2017/05/15 07:59:11 by cpark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <cstdlib>
-#include <iostream>
-#include <stdlib.h>
-
-using namespace std;
-
-void	ft_rc(char *str)
+void	*memset(void *s, int c, size_t n)
 {
-	unsigned int	i;
-
-	i = rand() % 100;
-	str[i] = 0;
-	if (i)
-	{
-		while (--i >= 1)
-			str[i] = rand() % 127;
-		str[i] = rand() % 127;
-	}
 }

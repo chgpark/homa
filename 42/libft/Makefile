@@ -12,13 +12,13 @@
 
 NAME = test
 
-SRC = main.cpp
+SRC = src/ft_putstr.cpp src/ft_putnbr.cpp rc.cpp
 
 all : $(NAME)
 
 re : fclean $(NAME)
 
 $(NAME) :
-	@g++ -o $(NAME) $(SRC)
+	@g++ -o $(NAME) -I src main.cpp $(SRC)
 fclean :
 	@rm $(NAME)

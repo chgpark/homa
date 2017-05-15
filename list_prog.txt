@@ -1,0 +1,6 @@
+avr-libc avrdude gcc-avr
+opencv2.4 3.2
+cuda
+
+ps		//listing process
+kill -9 pid	//kill pid process

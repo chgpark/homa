@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ft_lib.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpark <>                                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/12 16:25:14 by cpark             #+#    #+#             */
-/*   Updated: 2017/05/12 16:25:14 by cpark            ###   ########.fr       */
+/*   Created: 2017/05/15 14:50:29 by cpark             #+#    #+#             */
+/*   Updated: 2017/05/15 14:50:29 by cpark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-#include <iostream>
+#ifndef _FT_LIB_H_
+ #define _FT_LIB_H_
 
-void	ft_rc(char *str);
-using namespace std;
+ #include <opencv2/core.hpp>
+ #include <opencv2/imgcodecs.hpp>
+ #include <opencv2/highgui.hpp>
+ #include <opencv2/imgproc.hpp>
+ #include <cmath>
+ #include <iostream>
 
-int	main(int ac, char **av)
-{
-	char	str[100];
-	//memset
-	while (1)
-{
-	ft_rc(str);
-	if (atoi(str) < 0)
-{
-	ft_putnbr(atoi(str));
-	cout << endl << atoi(str) << endl;
-}
-}
-	return 0;
-}
+ using namespace cv;
+ using namespace std;
+
+#endif
