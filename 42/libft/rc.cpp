@@ -26,7 +26,7 @@ void	ft_rc(char *str)
 	if (i)
 	{
 		while (--i >= 1)
-			str[i] = rand() % 127;
-		str[i] = rand() % 127;
+			str[i] = rand() % 126 + 1;
+		str[i] = rand() % 126 + 1;
 	}
 }

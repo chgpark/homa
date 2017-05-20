@@ -1,0 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   roscmd                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cpark <>                                   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/17 17:36:00 by cpark             #+#    #+#             */
+/*   Updated: 2017/05/17 17:36:00 by cpark            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+roscore
+rosrun [package_name] [node_name]
+//ex)
+//rosrun turtlesim turtlesim_node __name:=my_turtle
+//rosrun rqt_plot rqt_plot
+
+rostopic
+rostopic type [topic]
+rosmsg show [topic_type]
+rostopic echo [topic]
+rostopic hz [topic] //how fast the publishing
+//ex)
+//rostopic pub -r 1 /turtle1/cmd_vel [type] [arg]
+//rostopic echo /turtle1/cmd_vel
+//rostopic list -v
+//rosmsg show geometry_msgs/Twist
+
+rosls
+roscd
+rosnode
+//ex)
+//rosnode list
+//rosnode info /rosout
+//rosnode ping my_turtle
+
+rosservice
+rosservice list
+rosservice type [service]
+//rosservice type /spawn | rossrv show
+rosservice call [service] [type]
+
+rosparam list
+rosparam set [param_name]
+rosparam get [param_name]
+//ex)
+//rosparam set /background_r 150
+//rosparam get /
+//rosparam get /background_g
+rosparam dump [file_name] [namespace]
+rosparam load [file_name] [namespace]
+//ex)
+//rosparam dump params.yaml
+//rosparam load params.yaml copy
+//rosparam get /copy/background_b

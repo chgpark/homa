@@ -1,0 +1,3 @@
+sed 's/1/2/g'		//change 1 to 2
+awk '$1="mv "$1'	//change first column
+paste file1 file2	//merge two files

@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.cpp                                      :+:      :+:    :+:   */
+/*   ft_putchar_fd.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpark <tytytr2@gmail.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/19 10:04:26 by cpark             #+#    #+#             */
-/*   Updated: 2017/05/19 10:04:26 by cpark            ###   ########.fr       */
+/*   Created: 2017/05/17 10:44:52 by cpark             #+#    #+#             */
+/*   Updated: 2017/05/17 10:44:52 by cpark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	i;
-	char	*tmp_a;
-	char	*tmp_b;
-	void	*tmp;
-
-	i = -1;
-	tmp = dst;
-	tmp_b = (char *) src;
-	while (++i < n)
-	{
-		tmp_a = (char *) (tmp + i);
-		*tmp_a = tmp_b[n];
-	}
-	return dst;
+	write(fd, &c, 1);
 }

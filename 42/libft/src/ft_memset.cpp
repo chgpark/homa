@@ -6,10 +6,18 @@
 /*   By: cpark <tytytr2@gmail.com>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 07:59:11 by cpark             #+#    #+#             */
-/*   Updated: 2017/05/15 07:59:11 by cpark            ###   ########.fr       */
+/*   Updated: 2017/05/17 11:14:24 by cpark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memset(void *s, int c, size_t n)
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
 {
+	char	*str;
+
+	str = (char *) s;
+	while (n--)
+		*str++ = c;
+	return s;
 }

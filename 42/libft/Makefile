@@ -10,15 +10,30 @@
 #*                                                                            *#
 #* ************************************************************************** *#
 
-NAME = test
+NAME1 = cust
+NAME2 = comp
 
-SRC = src/ft_putstr.cpp src/ft_putnbr.cpp rc.cpp
+SRC = src/*.cpp rc.cpp
 
-all : $(NAME)
+all : 1 2
 
-re : fclean $(NAME)
+1 : $(NAME1)
 
-$(NAME) :
-	@g++ -o $(NAME) -I src main.cpp $(SRC)
-fclean :
-	@rm $(NAME)
+2 : $(NAME2)
+
+re : fclean1 fclean2 $(NAME1) $(NAME2)
+
+re1 : fclean1 $(NAME1)
+
+re2 : fclean2 $(NAME2)
+
+$(NAME1) :
+	@g++ -o $(NAME1) -I src main.cpp $(SRC)
+$(NAME2) :
+	@g++ -o $(NAME2) -I src test.cpp $(SRC)
+fclean : fclean1 fclean2
+
+fclean1 :
+	@rm $(NAME1)
+fclean2 :
+	@rm $(NAME2)

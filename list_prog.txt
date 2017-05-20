@@ -4,3 +4,5 @@ cuda
 
 ps		//listing process
 kill -9 pid	//kill pid process
+fg $1		//resume to the stopped program
+diff <(./ ) <(./ )
