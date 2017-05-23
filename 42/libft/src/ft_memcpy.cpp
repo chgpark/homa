@@ -25,7 +25,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	while (++i < n)
 	{
 		tmp_a = (char *) (tmp + i);
-		*tmp_a = tmp_b[n];
+		*tmp_a = tmp_b[i];
 	}
 	return dst;
 }

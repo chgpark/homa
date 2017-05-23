@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	char	st[40];
 	int	i = 0;
 #ifdef a
-//	while (++i < 100)
+	while (++i < 100)
 	{
 		ft_rc(str);
 		cout << sizeof(st) << endl;
