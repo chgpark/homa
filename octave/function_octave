@@ -1,0 +1,78 @@
+load filename
+load('filename')
+save hello.mat variable;
+save hello.txt v -ascii		%save as text (ASCII)
+print -dpng 'myplot.png'
+addpath('~/homa/octave')
+
+clear
+
+disp(sprintf())
+
+who				%which variable is defined
+whos
+
+size(variable)
+
+v = matrixname(1:10)
+A(3,2)
+A(2,:)				% ";" means every element alon that row/column
+A(:)				% put all elements of A into a single vector
+A([1 3], :)
+A(:,2) = [10; 11; 12]
+A = [A, [100; 101; 102]]	% append another column vector to right
+C = [A; B]
+C = [A B]
+
+rand(3,2)
+randn(3,2)			% follow norm distribution
+
+[val, ind] = max(a)
+max(A, [], 1)
+
+a < 3
+
+find(a < 3)
+A = magic(5)
+
+sum(a)
+prod(a)
+floor(a)
+ceil(a)
+flipud(eye(9))
+pinv(A)
+
+plot
+xlabel('xlabel')
+ylabel('ylabel')
+legend('name')
+title('name')
+axis([0.5 1 -1 1])
+figure(1); plot(t,y1);
+figure(2); plot(t,y2);
+subplot(1,2,1);				% Divides plot a 1*2 grid, access first element
+imagesc(A), colorbar, colormap gray;
+
+for i = 1:10,
+	v(i) = 2^i;
+end;
+for i = v,
+	disp(i);
+end;
+
+while i <= 5,
+	v(i) = 100;
+	i = i+1;
+end;
+while true,
+	v(i) = 999;
+	i = i+1;
+	if i == 6,
+		break;
+	elseif i == 3,
+		disp(i);
+	end;
+end;
+
+function y = squareThisNumber(x)
+function [y1, y2] = squareAndCubeThisNumber(x)
