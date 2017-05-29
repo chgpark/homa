@@ -17,15 +17,11 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	int	i;
 	char	*tmp_a;
 	char	*tmp_b;
-	void	*tmp;
 
 	i = -1;
-	tmp = dst;
+	tmp_a = (char *) dst;
 	tmp_b = (char *) src;
 	while (++i < n)
-	{
-		tmp_a = (char *) (tmp + i);
-		*tmp_a = tmp_b[i];
-	}
+		tmp_a[i] = tmp_b[i];
 	return dst;
 }

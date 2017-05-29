@@ -30,13 +30,11 @@ int	main(int ac, char **av)
 	{
 		ft_rc(str);
 		cout << sizeof(st) << endl;
-		memcpy(st, str, 30);//rand() % (strlen(str) + 1));
+		memmove(st, str, 30);//rand() % (strlen(str) + 1));
 //		ft_putendl(st);
 		cout << sizeof(st) << endl;
 		cout << str << endl;
 		cout << st << endl;// << st << endl;
-		printf("%p\n", str);
-		printf("%p\n", st);
 	}
 #endif
 	return 0;
