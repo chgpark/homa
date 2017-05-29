@@ -22,6 +22,12 @@ using namespace std;
 
 int	main(int ac, char **av)
 {
+	char	*pch;
+	char	str[] = "Example string";
+	pch = (char *) ft_memchr(str, 1, strlen(str));
+	printf("%d\n", pch);
+	printf("%d\n", pch - str + 1);
+/*
 	char	str[100];
 	char	st[40];
 	int	i = 0;
@@ -30,13 +36,13 @@ int	main(int ac, char **av)
 	{
 		ft_rc(str);
 		cout << sizeof(st) << endl;
-		ft_memcpy(st, str, 30);//rand() % (strlen(str) + 1));
+		ft_memmove(st, str, 30);//rand() % (strlen(str) + 1));
+//		ft_putendl(st);
 		cout << sizeof(st) << endl;
 		cout << str << endl;
-		cout << st << endl;
-		printf("%p\n", str);
-		printf("%p\n", st);
+		cout << st << endl;// << st << endl;
 	}
 #endif
+*/
 	return 0;
 }
