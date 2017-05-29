@@ -1,0 +1,19 @@
+CTRL + b, then c - Create new window.
+CTRL + b, then , - Rename window.
+CTRL + b, then n - Move to the next window.
+CTRL + b, then p - Move to the previous window.
+CTRL + b, then & - Kill current window.
+CTRL + b, then % - Split current pane into two (vertically).
+CTRL + b, then " - Split current pane into two (horizontally).
+CTRL + b, then o - Switch to next pane.
+CTRL + b, then q - Show pane numbers (then type a # to switch to it).
+CTRL + b, then d - Detach from current session.
+CTRL + b, then ? - List all key bindings.
+CTRL + b, then : -> resize-pane -D U L R #
+CTRL + b, then ALT + 1~5 -> auto resize
+
+tmux list-sessions - List existing tmux sessions.
+tmux new -s session-name - Create a new tmux session named session-name.
+tmux attach -t session-name - Connect to an existing tmux session named session-name.
+tmux switch -t session-name - Switches to an existing tmux session named session-name. 
+
