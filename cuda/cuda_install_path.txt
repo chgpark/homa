@@ -1,0 +1,4 @@
+uhome/cpark
+ -   PATH includes /uhome/cpark/cuda/bin
+ -   LD_LIBRARY_PATH includes /uhome/cpark/cuda/lib64, or, add /uhome/cpark/cuda/lib64 to /etc/ld.so.conf and run ldconfig as root
+
