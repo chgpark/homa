@@ -1,0 +1,4 @@
+rosservice call mavros/arming
+rostopic echo mavros/imu
+rosrun end_run ctrl_att
+

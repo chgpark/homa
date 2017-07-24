@@ -76,3 +76,5 @@ end;
 
 function y = squareThisNumber(x)
 function [y1, y2] = squareAndCubeThisNumber(x)
+
+pos = find(y == 1); neg = find(y == 0); 

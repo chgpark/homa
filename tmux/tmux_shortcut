@@ -3,6 +3,7 @@ CTRL + b, then , - Rename window.
 CTRL + b, then n - Move to the next window.
 CTRL + b, then p - Move to the previous window.
 CTRL + b, then & - Kill current window.
+CTRL + b, then x - Kill current pane.
 CTRL + b, then % - Split current pane into two (vertically).
 CTRL + b, then " - Split current pane into two (horizontally).
 CTRL + b, then o - Switch to next pane.
