@@ -49,11 +49,8 @@ X = [ones(m, 1) X];
 %                 initial_theta, options);
 %
 
-
-
-
-
-
+for i = 0 : 9
+	
 
 
 
