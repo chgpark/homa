@@ -48,38 +48,14 @@ X = [ones(m, 1) X];
 %         fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), ...
 %                 initial_theta, options);
 %
-<<<<<<< HEAD
-	for c = 1 : 10
 	initial_theta = zeros(n + 1, 1);
+	for c = 1:num_labels
 	options = optimset('GradObj', 'on', 'MaxIter', 50);
 	[theta] = ...
 	fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), ...
 	initial_theta, options);
-	all_theta(c, :) = theta(:);
+	all_theta(c, :) = theta(:)';
 	end
-
-
-
-
-
-=======
-
-for i = 0 : 9
-<<<<<<< HEAD:octave/exercise/ex3/ex3/oneVsAll.m
-	initial_theta = zeros(n + 1, 1);
-     options = optimset('GradObj', 'on', 'MaxIter', 50);
-%     [theta] = ...
-%         fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), ...
-%                 initial_theta, options);
-=======
-	
->>>>>>> ee81512c36f40d16d6d09509adc99c0992ed79ea
->>>>>>> 93686401becc70c8ea5c7de0ee1f557d6ab02499:octave/exercise/ex3/ex3/oneVsAll2.m
-
-
-
-
-
 
 % =========================================================================
 
