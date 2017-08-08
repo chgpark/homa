@@ -1,5 +1,6 @@
 #pragma once
 
+#include "winset.h"
 #include "MarkerDet_Conf.h"
 #include "BlobLabeling.h"
 #include "SerialPort.h"
