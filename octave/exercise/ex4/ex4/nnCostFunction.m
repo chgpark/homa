@@ -61,18 +61,24 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
+yb = y * 1 ./ [1:num_labels] == 1;
 for K = 1:num_labels
 a = [ones(1, size(X, 1)); sigmoid(Theta1 * [ones(size(X, 1), 1) X]')];
-J = J + 1 / m * sum(log(sigmoid(Theta2(K, :) * a)) * -(y == K) - log(1 - sigmoid(Theta2(K, :) * a)) * (1 - (y == K)));
+J = J + 1 / m * sum(log(sigmoid(Theta2(K, :) * a)) * -yb(:, K) - log(1 - sigmoid(Theta2(K, :) * a)) * (1 - yb(:, K)));
 end
+for count = 1:m
+a = [1; sigmoid(Theta1 * [1 X(count, :)]')];
+delta3 = sigmoid(Theta2 * a) - yb(count, :)';
+Theta2_grad = Theta2_grad + delta3 * a';
+delta2 = Theta2' * delta3 .* sigmoidGradient([1; Theta1 * [1 X(count, :)]']);
+delta2 = delta2(2:end);
+Theta1_grad = Theta1_grad + delta2 * [1 X(count, :)];
+end
+Theta1_grad = 1/m * Theta1_grad;
+Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) + lambda / m * Theta1(:, 2:end);
+Theta2_grad = 1/m * Theta2_grad;
+Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) + lambda / m * Theta2(:, 2:end);
 J = J + lambda / (2 * m) * (sum(sum(Theta1(:, 2:(input_layer_size + 1)).^2)) + sum(sum(Theta2(:, 2:(hidden_layer_size + 1)).^2)));
-
-
-
-
-
-
-
 % =========================================================================
 
 % Unroll gradients
