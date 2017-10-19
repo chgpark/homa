@@ -2,7 +2,7 @@ avr-libc avrdude gcc-avr
 opencv2.4 3.2
 cuda
 ros
-gazebo6
+gazebo
 mavros
 
 ps		//listing process
