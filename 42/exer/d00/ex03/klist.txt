@@ -1,0 +1,7 @@
+Credentials cache: API:2D4B4B60-523D-4006-98A2-7FDEA7C6DD46
+        Principal: cpark@42.FR
+
+  Issued                Expires               Principal
+Mar  8 10:56:47 2017  Mar 15 10:56:47 2017  krbtgt/42.FR@42.FR
+Mar  8 11:00:13 2017  Mar 15 10:56:47 2017  ldap/ldap-proxy.42.fr@42.FR
+Mar  8 11:14:27 2017  Mar 15 10:56:47 2017  host/vgs-fn1.42.fr@42.FR
