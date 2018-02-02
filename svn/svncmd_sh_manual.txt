@@ -1,0 +1,57 @@
+sh svncmd.sh -[OPTION]
+
+1. Type of OPTIONs
+	1) i: init mode, setting userid and password
+
+	2) o: checkout mode, checkout workspace from repository
+
+	3) e: edit mode, set workspace before edit
+
+	4) l: lock mode, lock file in repository before edit
+
+	5) u: unlock mode, unlock file in repository before commit
+
+	6) c: commit mode, to make new revision and update repository
+
+	7) s: update source mode, after making new revision reflect changes to source
+
+2. Working environment
+	1) import source to repository:
+		svn import ${source path} svn://localhost/${repository} --username ${USERNAME} --password ${PASSWORD}
+
+	2) make the source directory to the version control target:
+		svn co svn://localhost/${repository} ${source path} --force --username ${USERNAME} --password ${PASSWORD}
+	3) set source directory path to /DATA/svn/repo/SOURCEPATH
+		ex)${repository}=${source path}
+
+	4) make working directory in ones space:
+		mkdir ${work space}/${working directory}
+
+	5) copy svncmd.sh to working directory
+
+	6) setting username and password:
+		sh svncmd.sh -i
+
+3. Daily usage
+	1) checkout from repository:
+		sh svncmd.sh -o
+
+	2) lock the editing target file:
+		sh svncmd.sh -l
+
+	3) setting before edit directory:
+		sh svncmd.sh -e
+
+	4) edit directory:
+		(1) Add file -> svn add file
+		(2) Del file -> svn del file
+		(3)	Edit elements using text editor
+	
+	5) unlock the commiting target file:
+		sh svncmd.sh -u
+
+	6) commit the directory:
+		sh svncmd.sh -c
+
+	7) update source path:
+		sh svncmd.sh -s

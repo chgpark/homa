@@ -1,39 +1,30 @@
-#* ************************************************************************** *#
-#*                                                                            *#
-#*                                                        :::      ::::::::   *#
-#*   Makefile                                           :+:      :+:    :+:   *#
-#*                                                    +:+ +:+         +:+     *#
-#*   By: cpark <tytytr2@gmail.com>                  +#+  +:+       +#+        *#
-#*                                                +#+#+#+#+#+   +#+           *#
-#*   Created: 2017/05/12 15:30:01 by cpark             #+#    #+#             *#
-#*   Updated: 2017/05/12 15:30:08 by cpark            ###   ########.fr       *#
-#*                                                                            *#
-#* ************************************************************************** *#
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cpark <marvin@42.fr>                       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/03/29 15:38:10 by cpark             #+#    #+#              #
+#    Updated: 2017/03/29 15:39:36 by cpark            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+CC=gcc
+CFLAGS=-I
+OBJ=libft.o
 
-NAME1 = cust
-NAME2 = comp
+NAME=testlibft
 
-SRC = src/*.cpp rc.cpp
+SRC=src/*.c
 
-all : 1 2
+all: $(NAME)
 
-1 : $(NAME1)
+re: fclean all
 
-2 : $(NAME2)
+$(NAME):
+	@$(CC) -Wall -Wextra -Werror -o  $(NAME) $(SRC) $(NAME).c
 
-re : fclean1 fclean2 $(NAME1) $(NAME2)
-
-re1 : fclean1 $(NAME1)
-
-re2 : fclean2 $(NAME2)
-
-$(NAME1) :
-	@g++ -o $(NAME1) -I src main.cpp $(SRC)
-$(NAME2) :
-	@g++ -o $(NAME2) -I src test.cpp $(SRC)
-fclean : fclean1 fclean2
-
-fclean1 :
-	@rm $(NAME1)
-fclean2 :
-	@rm $(NAME2)
+fclean: clean
+	@rm -f $(NAME)
+clean:
+	@rm -f *.o
