@@ -353,6 +353,79 @@ int		main(int ac, char **av)
 				printf("org : %d\t\ttest : %d\t\torgs : %d\t\tn: %d\n", (int)org[ii], (int)tb[ii], (int)orgs[ii], ii);
 		printf("n : %d\t\torg : %s\t\ttest : %s\t\torgs : %s\n", orgn, org, tb, orgs);
 	}
+	// TEST # 12
+	else if (tnum == 12)
+	{
+		memset(tb, 0, sizeof(prev));
+		memset(org, 0, sizeof(prev));
+		if (prev)
+		{
+			*tb = 'a';
+			*org = 'a';
+		}
+		orgs = (char *)malloc(sizeof(char)*ac);
+		if (orgs == NULL)
+			return -1;
+		ii = ac;
+		tmp = orgs;
+		while (ii-- > 0)
+			tmp[ii] = rand() % 96 + 31;
+		strcat(org, orgs);
+		ft_strcat(tb, orgs);
+		ii = prev;
+		while (ii-->0)
+			if (org[ii] != tb[ii])
+				printf("org : %d\t\ttest : %d\t\torgs : %d\t\tn: %d\n", (int)org[ii], (int)tb[ii], (int)orgs[ii], ii);
+		printf("n : %d\t\torg : %s\t\ttest : %s\t\torgs : %s\n", prev, org, tb, orgs);
+	}
+	// TEST # 13
+	else if (tnum == 13)
+	{
+		memset(tb, 0, sizeof(prev));
+		memset(org, 0, sizeof(prev));
+		if (prev)
+		{
+			*tb = 'a';
+			*org = 'a';
+		}
+		orgn = rand() % ac;
+		orgs = (char *)malloc(sizeof(char)*ac);
+		if (orgs == NULL)
+			return -1;
+		ii = ac;
+		tmp = orgs;
+		while (ii-- > 0)
+			tmp[ii] = rand() % 96 + 31;
+		strncat(org, orgs, orgn);
+		ft_strncat(tb, orgs, orgn);
+		ii = prev;
+		while (ii-->0)
+			if (org[ii] != tb[ii])
+				printf("org : %d\t\ttest : %d\t\torgs : %d\t\tn: %d\n", (int)org[ii], (int)tb[ii], (int)orgs[ii], ii);
+		printf("n : %d\t\torg : %s\t\ttest : %s\t\torgs : %s\n", orgn, org, tb, orgs);
+	}
+	// TEST # 14
+	else if (tnum == 14)
+	{
+		memset(tb, 0, sizeof(prev));
+		memset(org, 0, sizeof(prev));
+		if (prev)
+		{
+			*tb = 'a';
+			*org = 'a';
+		}
+		orgn = rand() % ac;
+		orgs = (char *)malloc(sizeof(char)*ac);
+		if (orgs == NULL)
+			return -1;
+		ii = ac;
+		tmp = orgs;
+		while (ii-- > 0)
+			tmp[ii] = rand() % 96 + 31;
+		tbn = ft_strlcat(tb, orgs, orgn);
+		ii = prev;
+		printf("n : %d\t\torgn : %d\t\ttest : %s\t\torgs : %s\n", tbn, orgn, tb, orgs);
+	}
 	if (orgs)
 		free(orgs);
 	free(org);

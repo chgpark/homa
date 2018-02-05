@@ -14,4 +14,7 @@ size_t	ft_strlen(const char *);
 char	*ft_strdup(const char *);
 char	*ft_strcpy(char *, const char *);
 char	*ft_strncpy(char *, const char *, size_t);
+char	*ft_strcat(char *, const char *);
+char	*ft_strncat(char *, const char *, size_t);
+size_t	ft_strlcat(char *, const char *, size_t);
 #endif
