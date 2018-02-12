@@ -10,8 +10,10 @@ static int	testn;
 int		main(int ac, char **av)
 {
 	int		ii;
+	int		jj;
 	int		prev;
 	int		options;
+	char	tstr[1000];
 	int	testx;
 	char	*org;
 	char	*orgs;
@@ -23,16 +25,19 @@ int		main(int ac, char **av)
 	char	*orgc;
 	void	*tbr;
 	char	*tbc;
+	char	*orgm;
 
 	orgs = NULL;
 	tnum = 0;
 	testn = 0;
-	while ((options = getopt(ac, av, "n:t:")) != -1)
+	ft_memset(tstr, 0, sizeof(tstr));
+	while ((options = getopt(ac, av, "n:t:i:")) != -1)
 	{
 		switch (options)
 		{
 			case 'n': tnum = atoi(optarg); break;
 			case 't': testn = atoi(optarg); break;
+			case 'i': jj = ft_strlen(optarg); ft_memcpy(tstr, optarg, jj); break;
 			default: break;
 		}
 	}
@@ -425,6 +430,159 @@ int		main(int ac, char **av)
 		tbn = ft_strlcat(tb, orgs, orgn);
 		ii = prev;
 		printf("n : %d\t\torgn : %d\t\ttest : %s\t\torgs : %s\n", tbn, orgn, tb, orgs);
+	}
+	// TEST # 15
+	else if (tnum == 15)
+	{
+		orgs = (char *)malloc(sizeof(char)*ac);
+		if (orgs == NULL)
+			return -1;
+		ii = ac;
+		while (ii-- > 0)
+			orgs[ii] = rand()%96 + 31;
+		orgn = (int)orgs[rand() % ac];
+		orgc = strchr(orgs, orgn);
+		tbc = ft_strchr(orgs, orgn);
+		if (orgc != tbc)
+			printf("org: %p\t\ttb: %p\n", orgc, tbc);
+		printf("orgs: %s\t\torgn: %d\n", orgs, orgn);
+		printf("org: %p\t\ttb: %p\n", orgc, tbc);
+	}
+	// TEST # 16
+	else if (tnum == 16)
+	{
+		orgs = (char *)malloc(sizeof(char)*ac);
+		if (orgs == NULL)
+			return -1;
+		ii = ac;
+		while (ii-- > 0)
+			orgs[ii] = rand()%96 + 31;
+		orgn = (int)orgs[rand() % ac];
+		orgc = strrchr(orgs, orgn);
+		tbc = ft_strrchr(orgs, orgn);
+		if (orgc != tbc)
+			printf("org: %p\t\ttb: %p\n", orgc, tbc);
+		printf("orgs: %s\t\torgn: %d\n", orgs, orgn);
+		printf("org: %p\t\ttb: %p\n", orgc, tbc);
+	}
+	// TEST # 17
+	else if (tnum == 17)
+	{
+		orgs = (char *)malloc(sizeof(char)*(ac+10));
+		orgm = (char *)malloc(sizeof(char)*(ac+1));
+		memset(orgm, 0, ac);
+		if (orgs == NULL)
+			return -1;
+		ii = ac+10;
+		while (ii-- > 0)
+			orgs[ii] = rand()%96 + 31;
+		ii = 0;
+		while (ii < ac)
+		{
+			orgm[ii] = orgs[ii+5];
+			ii++;
+		}
+		orgm[ii] = 0;
+		orgc = strstr(orgs, orgm);
+		tbc = ft_strstr(orgs, orgm);
+		if (orgc != tbc)
+			printf("org: %p\t\ttb: %p\n", orgc, tbc);
+		printf("orgs: %s\t\torgn: %s\n", orgs, orgm);
+		printf("org: %p\t\ttb: %p\n", orgc, tbc);
+	}
+	// TEST # 18
+	else if (tnum == 18)
+	{
+		orgs = (char *)malloc(sizeof(char)*(ac + 11));
+		orgm = (char *)malloc(sizeof(char)*(ac + 1));
+		memset(orgm, 0, ac);
+		if (orgs == NULL)
+			return -1;
+		ii = ac + 9;
+		while (ii-- > 0)
+			orgs[ii] = rand()%96 + 31;
+		orgs[ac+10] = 0;
+		ii = 0;
+		while (ii < ac)
+		{
+			orgm[ii] = orgs[ii+5];
+			ii++;
+		}
+		orgm[ii] = 0;
+		tbc = ft_strnstr(orgs, orgm, testn);
+		printf("orgs: %s\t\torgm: %s\n", orgs, orgm);
+		printf("org: %p\t\ttb: %p\n", orgs+5, tbc);
+	}
+	// TEST # 19
+	else if (tnum == 19)
+	{
+		orgs = (char *)malloc(sizeof(char)*(ac + 1));
+		ii = ac;
+		while (ii-- > 0)
+			orgs[ii] = rand() % 96 + 31;
+		orgs[ac] = 0;
+		orgn = strcmp(org, orgs);
+		tbn = ft_strcmp(org, orgs);
+		if (orgn != tbn)
+			printf("orgn: %d\t\ttbn: %d\n", orgn, tbn);
+		printf("orgn: %d\t\ttbn: %d\n", orgn, tbn);
+	}
+	// TEST # 20
+	else if (tnum == 20)
+	{
+		orgs = (char *)malloc(sizeof(char)*(ac + 1));
+		ii = ac;
+		while (ii-- > 0)
+			orgs[ii] = rand() % 96 + 31;
+		orgs[ac] = 0;
+		orgs = "Hello";
+		orgm = "Helloaa";
+		orgn = strncmp(orgm, orgs, testn);
+		tbn = ft_strncmp(orgm, orgs, testn);
+		if (orgn != tbn)
+			printf("orgn: %d\t\ttbn: %d\n", orgn, tbn);
+		printf("orgn: %d\t\ttbn: %d\n", orgn, tbn);
+		printf("orgn: %s\t\ttbn: %s\n", orgm, orgs);
+	}
+	// TEST # 21
+	else if (tnum == 21)
+	{
+		orgn = atoi(tstr);
+		tbn = ft_atoi(tstr);
+		printf("orgn: %d\t\ttbn: %d\t\tstring: %s\n", orgn, tbn, tstr);
+	}
+	// TEST # 22
+	else if (tnum == 22)
+	{
+		orgs = (char *)malloc(sizeof(char));
+		orgs[0] = rand() % 96 + 31;
+		orgn = isalpha(orgs[0]);
+		tbn = ft_isalpha(orgs[0]);
+		if (orgn != tbn)
+			printf("org: %d\t\ttb: %d\t\tc: %c\n", orgn, tbn, orgs[0]);
+		printf("org: %d\t\ttb: %d\t\tc: %c\n", orgn, tbn, orgs[0]);
+	}
+	// TEST # 23
+	else if (tnum == 23)
+	{
+		orgs = (char *)malloc(sizeof(char));
+		orgs[0] = rand() % 96 + 31;
+		orgn = isdigit(orgs[0]);
+		tbn = ft_isdigit(orgs[0]);
+		if (orgn != tbn)
+			printf("org: %d\t\ttb: %d\t\tc: %c\n", orgn, tbn, orgs[0]);
+		printf("org: %d\t\ttb: %d\t\tc: %c\n", orgn, tbn, orgs[0]);
+	}
+	// TEST # 24
+	else if (tnum == 24)
+	{
+		orgs = (char *)malloc(sizeof(char));
+		orgs[0] = rand() % 96 + 31;
+		orgn = isalnum(orgs[0]);
+		tbn = ft_isalnum(orgs[0]);
+		if (orgn != tbn)
+			printf("org: %d\t\ttb: %d\t\tc: %c\n", orgn, tbn, orgs[0]);
+		printf("org: %d\t\ttb: %d\t\tc: %c\n", orgn, tbn, orgs[0]);
 	}
 	if (orgs)
 		free(orgs);
