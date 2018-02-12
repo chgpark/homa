@@ -1,0 +1,11 @@
+extends layout
+block content
+	h1= title
+	ol	Category
+		each value in data
+			li=value
+	p	Select One of the buttons
+	p
+		button(onClick="move('search')") Search
+	p
+		button(onClick="move('upload')") Upload

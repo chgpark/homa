@@ -1,0 +1,21 @@
+extends layout
+block content
+	h1= title
+	p
+		button(onclick="move('')") Index Page
+	form(method="GET", action="/search")
+		input(type='hidden', name="_method", value="GET")
+		tr
+			td Id: 
+				input(type="text", name="id")
+			td
+				input(type="submit")
+	script.
+		console.log('#{title}');
+		if ('#{title}' === 'Express') {
+			alert("working");
+		}
+	if condition
+		ul
+			each value in data
+				li=value['id']+" "+value['ktype']+" "+value['key']
