@@ -1,0 +1,39 @@
+Parts
+- DB management
+	upload using excel file
+	upload using manual each by each
+	update
+	delete
+	alarm through telegram: it works at 8:00 in each days
+	check format
+	
+- Order
+	Python scraping from lazada, que10
+	Interact with DB server
+		DB update
+			customer name
+			customer email
+			purchased date
+		Sending Email
+			email
+			name
+			key: call the unused key from db
+
+- Mornitoring
+	Search and display about present
+		The number of Keys total / used / non-used
+	contents
+		search input:
+			customer name
+			customer email
+			key
+			updated date
+			purchased date
+		button:
+			total / used / non-used
+			종류
+
+- webpage
+	index
+	mornitoring
+	db manage
