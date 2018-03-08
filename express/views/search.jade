@@ -3,19 +3,82 @@ block content
 	h1= title
 	p
 		button(onclick="move('')") Index Page
-	form(method="GET", action="/search")
-		input(type='hidden', name="_method", value="GET")
-		tr
-			td Id: 
-				input(type="text", name="id")
-			td
-				input(type="submit")
+	if condition
+	table#tname2
+		thead
+			tr
+				td Ktype
+				td Used
+				td Unused
+				td Total
+		tbody
+			each tmp, tmpl in cnt, ktypelist
+				tr
+					td
+						value=tmpl
+					td
+						value=tmp['used']
+					td
+						value=tmp['unused']
+					td
+						value=tmp['unused']+tmp['used']
+	table#tname1
+		thead
+			tr
+				td Used
+				td Type
+				td Id
+				td Key
+				td Name
+				td Email
+				td Submit
+		tbody
+			tr 
+				form(method="GET", action="/search")
+					input(type='hidden', name="_method", value="GET")
+					td
+						select(name="used")
+							option(value="true") used
+							option(value="false") unused
+					td
+						select(name="type")
+							option(value="TOTAL") Total
+							option(value="WIPO") Win_Pro_oem
+							option(value="WIPF") Win_Pro_fpp
+							option(value="WIHO") Win_Home_oem
+							option(value="WIHF") Win_Home_fpp
+					td
+						input(type="text", name="id")
+					td
+						input(type="text", name="key")
+					td 
+						input(type="text", name="name")
+					td 
+						input(type="text", name="email")
+					td
+						input(type="submit")
+			each value in data
+				tr 
+					td
+						value=value['used']
+					td
+						value=value['ktype']
+					td
+						value=value['id']
+					td
+						value=value['key']
+					td
+						value=value['buyer_name']
+					td
+						value=value['buyer_email']
+
+
+
+
+
+
 	script.
 		console.log('#{title}');
 		if ('#{title}' === 'Express') {
 			alert("working");
 		}
-	if condition
-		ul
-			each value in data
-				li=value['id']+" "+value['ktype']+" "+value['key']

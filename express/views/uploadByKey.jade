@@ -1,0 +1,33 @@
+extends layout
+block content
+	h1= title
+	p
+		button(onclick="move('')") Index Page
+	p
+		button(onclick="move('upload')") Upload Page
+	table
+		thead
+			tr
+				td Type
+				td Key
+				td Name
+				td Email
+				td Submit
+		tbody
+			tr
+				form(method="post" action="/uploadByKey")
+					input(type='hidden' name="_method" value="POST")
+					td
+						select(name="type")
+							option(value="WIPO") Win_Pro_oem
+							option(value="WIPF") Win_Pro_fpp
+							option(value="WIHO") Win_Home_oem
+							option(value="WIHF") Win_Home_fpp
+					td
+						input(type="text", name="key")
+					td
+						input(type="text", name="name")
+					td
+						input(type="text", name="email")
+					td
+						input(type="submit")

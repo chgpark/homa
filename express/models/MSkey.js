@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 // Define Schemes
 const MkeySchema = new mongoose.Schema({
-	id: { type: Number, required: true, unique: true },
+	id: { type: Number, required: true},
 	ktype: { type: String, required: true },
-	key: { type: String, required: true },
+	key: { type: String, required: true, unique: true },
 	used: { type: Boolean, required: true, default: false },
 	buyer_date: { type: Date, default: "" },
 	buyer_name: { type: String, default: "" },
@@ -19,24 +19,22 @@ MkeySchema.statics.create = function (payload) {
 	return Mkey.save();
 };
 
-MkeySchema.statics.findAll = function () {
-	return this.find({});
-};
-
-MkeySchema.statics.findOneById = function (id) {
-	return this.findOne({ id });
+MkeySchema.statics.findOneByelem = function (elem) {
+	return this.findOne(elem);
 };
 
 MkeySchema.statics.findElement = function (elem) {
 	return this.find(elem);
 };
 
-MkeySchema.statics.updateById = function (id, payload) {
-	return this.findOneAndUpdate({ id }, payload, { buyer_date: Date.now });
+MkeySchema.statics.updateByKey = function (keynktype, payload) {
+	payload['used'] = true;
+	payload['buyer_date'] = Date.now();
+	return this.findOneAndUpdate(keynktype, payload);
 };
 
-MkeySchema.statics.deleteById = function (id) {
-	return this.remove({ id });
+MkeySchema.statics.deleteByelem = function (elem) {
+	return this.remove(elem).exec();
 };
 
 module.exports = mongoose.model('MSkey', MkeySchema);

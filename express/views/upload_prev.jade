@@ -1,0 +1,24 @@
+extends layout
+block content
+	h1= title
+	p Welcome to #{title}
+	script.
+		var ii = 0;
+		while (ii < 2){
+			ii += 1;
+		}
+		console.log('#{title}');
+		if ('#{title}' === 'Express') {
+			alert("working");
+		}
+	if condition
+		p It's true
+		ul
+			each value in data
+				li=value['id']+" "+value['ktype']+" "+value['key']
+	form(method="GET", action="/search/submit")
+		input(type='hidden', name="_method", value="GET")
+		p Id
+			input(type="text", name="id")
+		p
+			input(type="submit")
