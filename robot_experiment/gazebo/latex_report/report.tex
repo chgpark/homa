@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\newenvironment{Korean}{%
+ \CJKfamily{mj}}{}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{mathtools}
+\usepackage{cite}
+\usepackage{multirow,makecell}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\setcounter{secnumdepth}{4}
+
+\begin{CJK}{UTF8}{}
+\begin{Korean}
+
+\title{RE510 Intelligent Robot Design Lab. HW 1}
+
+\author{Hyungtae Lim}
+
+\date{20th, March, 2019}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+
+\section{Experiment Implementation}
+
+\subsection{ROS Package}
+
+\begin{lstlisting}[frame=single]
+$ cd ~/RE510_ws/src
+$ catkin_create_pkg hw1 std_msgs rospy roscpp
+$ cd ..
+$ catkin build
+$ source devel/setup.zsh
+
+\end{lstlisting}
+
+\subsection{Unified Robot Description Format}
+
+\subsubsection{Link}
+
+\paragraph{Chassis}
+
+\begin{align}
+I_{xx} & =\frac{m*(a^2 + c^2)}{12} \\ 
+I_{yy} & =\frac{m*(b^2 + c^2)}{12} \\
+I_{zz} & =\frac{m*(a^2 + b^2)}{12} 
+\end{align}
+
+\subsubsection{Joint}
+
+\begin{table}[h]
+	\centering
+	\caption{Important options that are needed to operate Gazebo among all options}
+	\begin{tabular}{cc}
+		\toprule
+		Option name     &  Value   \\ \midrule
+		updateRate     & 100 \\
+		LeftJoint     & LeftWheelJoint \\
+		RightJoint     & RightWheelJoint \\
+		wheelSeparation     & 0.35 \\
+		wheelDiameter    & 0.2 \\
+		wheelTorque     & 300 \\
+		wheelAcceleration     & 20 \\
+		commandTopic     & cmd\underline{ }vel \\ \bottomrule
+	\end{tabular}
+	\label{table:rmse}
+\end{table}
+
+\subsection{Commands for Launching a ROS Launch File and Publishing a Topic}
+
+\section{Reference}
+
+.
+
+[1] ROS.org., urdf/XML/joint. http://wiki.ros.org/urdf/XML/joint
+
+[2] ROS.org., urdf/XML/line. http://wiki.ros.org/urdf/XML/line
+
+[3] GAZEBO, Tutorial: Using a URDF in Gazebo. \\ http://gazebosim.org/tutorials?tut=ros\_urdf\&cat=connect\_urdfros
+
+[4] ROS.org., ros\_control. http://wiki.ros.org/ros\_control
+\end{Korean}
+\end{CJK}
+
+\end{document}

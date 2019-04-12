@@ -1,0 +1,22 @@
+\contentsline {paragraph}{Abstract}{2}% 
+\contentsline {section}{\numberline {1}Introduction}{1}% 
+\contentsline {subsection}{\numberline {1.1}Robotics simulator}{1}% 
+\contentsline {subsection}{\numberline {1.2}Gazebo}{1}% 
+\contentsline {subsection}{\numberline {1.3}ROS}{1}% 
+\contentsline {section}{\numberline {2}Experiment}{2}% 
+\contentsline {subsection}{\numberline {2.1}Experimental system}{2}% 
+\contentsline {subsubsection}{\numberline {2.1.1}Model spawning process}{2}% 
+\contentsline {subsubsection}{\numberline {2.1.2}Control system}{3}% 
+\contentsline {subsection}{\numberline {2.2}Model}{3}% 
+\contentsline {subsubsection}{\numberline {2.2.1}Link}{3}% 
+\contentsline {subsubsection}{\numberline {2.2.2}Inertia moment and mass of link}{3}% 
+\contentsline {subsubsection}{\numberline {2.2.3}Joint}{4}% 
+\contentsline {subsubsection}{\numberline {2.2.4}Visualization of model}{4}% 
+\contentsline {subsubsection}{\numberline {2.2.5}Xacro file}{4}% 
+\contentsline {subsection}{\numberline {2.3}Model Controller}{5}% 
+\contentsline {subsection}{\numberline {2.4}ROS packages}{5}% 
+\contentsline {subsubsection}{\numberline {2.4.1}Spawn model package}{5}% 
+\contentsline {subsubsection}{\numberline {2.4.2}Spawn controller package}{5}% 
+\contentsline {subsubsection}{\numberline {2.4.3}Run the project}{6}% 
+\contentsline {section}{\numberline {3}Result}{6}% 
+\contentsline {section}{\numberline {4}Conclusion}{7}% 

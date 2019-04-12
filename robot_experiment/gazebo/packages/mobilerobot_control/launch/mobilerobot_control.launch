@@ -1,0 +1,7 @@
+<launch>
+  <arg name="model" default="$(find mobilerobot_control)/urdf/two_wheeled.urdf.xacro" />
+
+  <rosparam command="load" file="$(find mobilerobot_control)/config/diffdrive.yaml" ns="mobilerobot/mobilerobot_base_controller"/>
+
+  <node name="two_wheel_controller_spawner" pkg="controller_manager" type="spawner" args="mobilerobot/mobilerobot_base_controller"/>
+</launch>
