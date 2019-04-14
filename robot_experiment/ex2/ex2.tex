@@ -60,16 +60,20 @@
 		\label{table:methods}
 		\end{table}
 		
-		\subsection{Occupancy Grid Map}
+		\subsection{Occupancy grid map}
+		Occupancy grid map이란, robot position을 알때 noisy하고 uncertain한 sensor measurement를 통해 map generation을 하는 알고리즘입니다. 실제 map의 각 공간을 몇개의 cell로 나눈 Grid map을 기반으로 합니다. Binary random variable probobility를 통해 표현하며 실제 환경으로부터 센서를 통해 수집하는 sample을 사용하여 해당 부분의 물체 점유여부를 확률로 표시합니다.\\
+		\indent 대략적인 과정은 다음과 같습니다. 실험과 같이 range measurement를 사용한 mobile robot의 경우를 가정하여 설명하겠습니다. 우선 맵을 생성할 grid를 가정합니다. 다음으로 환경에서 robot을 작동하며 range measurement를 수집합니다. 현재 robot의 초기 위치에 대한 position과 pose가 known이기 때문에 이를 기준으로 수집한 데이터에 해당하는 grid 영역을 업데이트합니다. 업데이트하는 방식은 초기 점유함과 비어있음의 상태가 각각 0.5의 확률을 가지는 상황에서 물체가 점유하고 있는 영역은 점유되었음에 해당하는 확률의 값을 높여주고 반대로 비어있는 영역은 비어있음에 해당하는 확률의 값을 높여줍니다. Binary random variable이기 때문에 두 확률값의 합은 항상 1입니다. Robot이 작동하며 각 위치에서 얻는 데이터들을 sample로 grid map을 계속해서 업데이트합니다.
 		
-		\subsection{Monte Carlo Localization}
+		\subsection{Monte Carlo Localization(MCL)}
+		MCL은 particle filter를 이용해서 로봇의 location을 찾는 알고리즘입니다. 맵이 주어진 상태에서 해당 시점에 들어오는 센서 데이터와 맵을 비교해서 map에 대한 location과 orientation을 찾습니다.\\
+		\indent pseudo code는 list와 같습니다. 맨 처음 robot의 location과 orientation을 map 상에 uniform distribution에 따르는 sample로 initialization을 합니다. 다음으로 initialized state에서 robot을 조종하는 control input을 이용하여 다음 state로 업데이트합니다. 다음 state에서 들어오는 measurement 값과 map을 비교하여 state의 distribution을 update하고 update한 distribution에 따라 state의 particle을 resampling합니다. 다음과 같은 recursive baysian estimation을 통해 state의 particle들을 실제 distribution에 맞게 재조정하며 location과 orientation을 찾습니다.
 		
 	\section{Experiment}
 		\subsection{Experimental system}
-
-
+		실험은 Occupancy grid map을 이용한 map generation과 MCL을 이용한 localization을 나누어서 진행하였습니다.\\
+		\indent Map generation에서는 mobile robot의 2D lidar로의 transformation matrix, grid map의 center point와 resolution, odometry와 2D lidar 데이터가 주어졌습니다. 작성한 부분은 grid map 상에서 robot의 좌표 계산, robot과 센서 사이의 transformation matrix를 활용한 grid map 상의 occupied cell 좌표 계산, 해당 상태에서 occupied cell과 robot 사이의 unoccupied cell 좌표 계산과 occupancy grid map update입니다.\\
+		\indent MCL에서는 map, mobile robot의 2D lidar로의 transformation matrix, grid map의 center point와 resolution, odometry와 2D lidar 데이터가 주어졌습니다. 작성한 부분은 MCL 알고리즘과 grid map 상에서의 robot과 occupied cell의 좌표 계산이었습니다. 우선 MCL 알고리즘은 state particle initialization, prediction, weighting, resampling이었습니다. 좌표 계산은 map generation 부분과 동일하게 진행하였습니다.
 		\subsection{Code explanation}
-		
 			\subsubsection{Map generation part}
 			\subsubsection{Localization part}
 			
