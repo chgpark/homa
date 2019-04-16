@@ -1,6 +1,17 @@
 import cv2
 from pydub import AudioSegment
 from pydub.playback import play
+import threading
+
+class voice_thread(threading.Thread):
+    def __init__(self, voice_key):
+        super(voice_thread, self).__init__()
+        self.voice_key = voice_key
+        self.voice_by_face = voice()
+
+    def run(self):
+        self.voice_by_face.run_voice(self.voice_key)
+
 
 class voice:
     def __init__(self):
@@ -19,7 +30,7 @@ class voice:
 
 class face:
     def __init__(self):
-        self.cascPath = '/home/cpark/PycharmProjects/face/haarcascade_frontalface_default.xml'
+        self.cascPath = 'haarcascade_frontalface_default.xml'
         self.faceCascade = cv2.CascadeClassifier(self.cascPath)
 
     def get_face(self, gray):
@@ -35,7 +46,6 @@ class video:
     def __init__(self, cam_num):
         self.cap = cv2.VideoCapture(cam_num)
         self.face_detect = face()
-        self.voice_by_face = voice()
 
     def do(self):
         while(True):
@@ -55,7 +65,8 @@ class video:
                 face_class = 1
 
                 if face_class == 1:
-                    self.voice_by_face.run_voice()
+                    tmp = voice_thread(voice_key=1)
+                    tmp.start()
 
 
             # Display the resulting frame
@@ -70,5 +81,5 @@ class video:
         cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    v = video(cam_num=1)
+    v = video(cam_num=0)
     v.do()

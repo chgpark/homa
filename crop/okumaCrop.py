@@ -146,7 +146,7 @@ class OkumaCropper:
 if __name__ == '__main__':
     # cv2.namedWindow("cropping", cv2.WINDOW_GUI_NORMAL)
     cr = OkumaCropper()
-    cr.set_data_dir('/run/user/1020/gvfs/dav:host=urobot.synology.me,port=5006,ssl=true,user=cpark/ResearchServer/dataset/AVTDC/opendata/DataSet/okutama action')
-    cr.set_output_path('/run/user/1020/gvfs/dav:host=urobot.synology.me,port=5006,ssl=true,user=cpark/ResearchServer/dataset/AVTDC/opendata/cropped')
+    cr.set_data_dir('/run/user/1000/gvfs/smb-share:server=urobot.synology.me,share=researchserver/dataset/AVTDC/opendata/DataSet/okutama action')
+    cr.set_output_path('/run/user/1000/gvfs/smb-share:server=urobot.synology.me,share=researchserver/dataset/AVTDC/opendata/cropped')
     cr.get_filenames()
     cr.iteration_file()
