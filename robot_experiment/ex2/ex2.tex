@@ -37,29 +37,7 @@
 	\newpage
 	\setcounter{page}{1}
 		
-	\section{Introduction}
-		\subsection{Robot mapping}
-		Robot mapping은 robot navigation 중 한 부분으로 환경속에서 움직이는 robot이 해당 환경을 인식하기 위해서 환경을 공간정보에 기반하여 modeling 하고 시간에 따라 유지하는 것입니다. 환경의 인식의 한 예로 robot이 자신 혹은 환경 속에 존재하는 다른 물체의 위치추정과 장애물의 인식이 있습니다. Mapping을 통해서 robot은 outdoor 혹은 indoor 환경에서 자신의 위치를 알고 임무를 수행할 수 있습니다.\\
-		\indent 환경의 인식은 두가지 종류의 정보를 통해 이루어집니다. 첫째는 스스로의 동작을 통해 얻을 수 있는 idiothetic 정보입니다. 예를 들어, 바퀴의 회전수를 측정하고 측정한 데이터를 dead reckoning하여 얻는 odometry와 같이 internal sensor를 통해 얻을 수 있는 정보입니다. 둘째는 robot 외부에 부착된 센서를 통해 얻는 allothetic 정보입니다. 예를 들어, 카메라, laser, lidar와 같은 external sensor들을 통해 얻는 정보입니다.\\
-		\indent 위 두가지 정보를 활용하여 그림 2와 같이 mapping을 진행합니다. robot mapping의 진행 과정은 internal과 external sensor로부터 얻은 데이터를 통해 robot의 position을 갱신하고 map의 spatial model을 생성하는 것입니다.
-		\subsection{Map generation \& localization}
-		\indent 이 실험에서는 inertial measurement unit(IMU)와 encoder를 통해 얻은 데이터를 dead rekoning한 odometry와 2D lidar sensor를 통해 얻은 환경의 range measurment를 활용하여 robot mapping을 진행하였습니다.\\
-		\indent Robot mapping은 map generation과 localization 두 부분으로 나누어서 진행하였습니다. 우선 map generation은 그림 3과 같습니다. Internal sensor data를 통해 position을 갱신하고 external sensor와 position 데이터를 통합하여 map의 spatial model을 만듭니다. 다음으로 localization은 그림 4와 같습니다. External sensor로부터 얻은 데이터와 map의 spatial model을 비교하여 robot의 location 정보를 추정하고 internal sensor를 통해 position 정보를 갱신하는 과정을 지속적으로 반복하며 map 상에서 로봇의 위치를 찾습니다.\\
-		\indent 실험에서 사용한 map generation 방법은 Occupancy grid map이고, localization방법은 Monte carlo localization입니다.\\
-		
-		\begin{table}[h]
-		\centering
-		\caption{Map generation \& Localization method using in experiment}
-		\begin{tabular}{c|c}
-			\textbf{Process} & \textbf{Method}   \\
-			\hline
-			Map generation & Occupancy grid map\\
-			\hline
-			Localization & Monte carlo localization\\
-		\end{tabular}
-		\label{table:methods}
-		\end{table}
-		
+	\section{Principle}
 		\subsection{Occupancy grid map}
 		Occupancy grid map이란, robot position을 알때 noisy하고 uncertain한 sensor measurement를 통해 map generation을 하는 알고리즘입니다. 실제 map의 각 공간을 몇개의 cell로 나눈 Grid map을 기반으로 합니다. Binary random variable probobility를 통해 표현하며 실제 환경으로부터 센서를 통해 수집하는 sample을 사용하여 해당 부분의 물체 점유여부를 확률로 표시합니다.\\
 		\indent 대략적인 과정은 다음과 같습니다. 실험과 같이 range measurement를 사용한 mobile robot의 경우를 가정하여 설명하겠습니다. 우선 맵을 생성할 grid를 가정합니다. 다음으로 환경에서 robot을 작동하며 range measurement를 수집합니다. 현재 robot의 초기 위치에 대한 position과 pose가 known이기 때문에 이를 기준으로 수집한 데이터에 해당하는 grid 영역을 업데이트합니다. 업데이트하는 방식은 초기 점유함과 비어있음의 상태가 각각 0.5의 확률을 가지는 상황에서 물체가 점유하고 있는 영역은 점유되었음에 해당하는 확률의 값을 높여주고 반대로 비어있는 영역은 비어있음에 해당하는 확률의 값을 높여줍니다. Binary random variable이기 때문에 두 확률값의 합은 항상 1입니다. Robot이 작동하며 각 위치에서 얻는 데이터들을 sample로 grid map을 계속해서 업데이트합니다.
